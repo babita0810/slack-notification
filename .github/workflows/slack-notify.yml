@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Command
         run: |
-          ls
+          lk
           
   run-if-success:
     runs-on: ubuntu-20.04
