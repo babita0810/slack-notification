@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Command
         run: |
-          exit 0
+          exit 1
           
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
