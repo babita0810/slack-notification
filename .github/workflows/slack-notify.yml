@@ -29,7 +29,7 @@ jobs:
   run-if-failed:
     runs-on: ubuntu-20.04
     needs: [deploy, run-if-success]
-    if: always() && needs.run-if-success.result == 'skipped' && (needs.build.result == 'failure' )
+    if: always() && needs.run-if-success.result == 'skipped' && (needs.deploy.result == 'failure' )
     steps:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
