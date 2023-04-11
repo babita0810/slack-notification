@@ -5,6 +5,7 @@ on: workflow_dispatch
 jobs:
   deploy:
     name: Notify
+    runs-on: ubuntu-latest
     steps:
       - name: Command
         run: |
