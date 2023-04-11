@@ -4,6 +4,8 @@ on: workflow_dispatch
 
 jobs:
   deploy:
+    name: Notify
+    steps:
       - name: Command
         run: |
           exit 0
