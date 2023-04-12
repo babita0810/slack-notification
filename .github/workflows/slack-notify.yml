@@ -1,6 +1,6 @@
 name: Slack Notify
 
-on: workflow_dispatch
+on: deployment
 
 jobs:
   deploy:
