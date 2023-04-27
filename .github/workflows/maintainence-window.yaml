@@ -55,7 +55,7 @@ jobs:
             ls 
             echo "$APP_STATUS"
             kubectl apply -f 50x.yaml 
-            kubectl apply -f configmap-files.yaml
+            kubectl apply -f configmap-file.yaml
           else
             kubectl apply -f old-50x.yaml
             kubectl apply -f old-cm.yaml
