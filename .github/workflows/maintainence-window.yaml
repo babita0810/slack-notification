@@ -51,7 +51,7 @@ jobs:
         run: |
           APP_STATUS=${{github.event.inputs.app_status}}
           
-          if [[ $ APP_STATUS == "enable maintainence window" ]];
+          if [[ $APP_STATUS == "enable maintainence window" ]];
           then
             kubectl apply -f 50x.yaml 
             kubectl apply -f configmap-files.yaml
