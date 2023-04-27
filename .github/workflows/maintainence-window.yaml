@@ -4,7 +4,7 @@ name: Run command in kubernetes cluster
 on:
   workflow_dispatch:
     inputs:
-      job_env:
+      app_status:
         description: Choose the action
         required: true
         type: choice
