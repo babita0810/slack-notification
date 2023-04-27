@@ -9,8 +9,8 @@ on:
         required: true
         type: choice
         options:
-          - 'enable maintainence window'
-          - 'disable maintainence window'
+          - 'enable'
+          - 'disable'
 jobs:
   deploy:
     name: Deploy
@@ -50,9 +50,10 @@ jobs:
       - name: Enable/Disable maintainence window
         run: |
           APP_STATUS=${{github.event.inputs.app_status}}
-          
-          if [[ $ APP_STATUS == "enable maintainence window" ]];
+          if [[ $APP_STATUS == "enable" ]];
           then
+            ls 
+            echo "$APP_STATUS"
             kubectl apply -f 50x.yaml 
             kubectl apply -f configmap-files.yaml
           else
