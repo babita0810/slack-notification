@@ -47,3 +47,17 @@ jobs:
             sudo mv kubectl /usr/local/bin/
             mkdir ~/.kube
             echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ~/.kube/config
+      - name: Enable/Disable maintainence window
+        run: |
+          APP_STATUS=${{github.event.inputs.app_status}}
+          
+          if [[ $ APP_STATUS == "enable maintainence window" ]];
+          then
+            kubectl apply -f 50x.yaml 
+            kubectl apply -f configmap-files.yaml
+          else
+            kubectl apply -f old-50x.yaml
+            kubectl apply -f old-cm.yaml
+          fi
+          kubectl -n zapp-stag-test rollout restart deployment/zapp-stag-web
+            
