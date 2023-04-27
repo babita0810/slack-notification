@@ -1,0 +1,49 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Run command in kubernetes cluster
+on:
+  workflow_dispatch:
+    inputs:
+      job_env:
+        description: Choose the action
+        required: true
+        type: choice
+        options:
+          - 'enable maintainence window'
+          - 'disable maintainence window'
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install and configure aws
+        run: |
+          sudo apt install awscli -y
+          mkdir -p ~/.aws
+          cat <<EOF > ~/.aws/config
+          [default]
+          aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          EOF
+
+      - name: Install and configure helm
+        run: |
+          curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+          sudo apt-get install apt-transport-https --yes
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+          sudo apt-get update
+          sudo apt-get install helm
+
+      - name: Install and configure kubectl
+        run: |
+            VERSION=$(curl --silent https://storage.googleapis.com/kubernetes-release/release/stable.txt)
+            curl https://storage.googleapis.com/kubernetes-release/release/$VERSION/bin/linux/amd64/kubectl \
+                --progress-bar \
+                --location \
+                --remote-name
+            chmod +x kubectl
+            sudo mv kubectl /usr/local/bin/
+            mkdir ~/.kube
+            echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ~/.kube/config

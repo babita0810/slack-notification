@@ -1,0 +1,380 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 50x-configmap-files
+  namespace: zapp-stag-test
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <!-- saved from url=(0076)https://assets-production.applicaster.com/static/zapp-error/maintenance.html -->
+    <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+        <title>Zapp</title>
+        <style>
+               
+            @font-face {
+                font-family: 'open_sansbold';
+                src: url('opensans-bold-webfont.woff2') format('woff2'),
+                    url('opensans-bold-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+
+
+            @font-face {
+                font-family: 'open_sansbold_italic';
+                src: url('opensans-bolditalic-webfont.woff2') format('woff2'),
+                    url('opensans-bolditalic-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+
+
+            @font-face {
+                font-family: 'open_sansextrabold';
+                src: url('opensans-extrabold-webfont.woff2') format('woff2'),
+                    url('opensans-extrabold-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+
+
+            @font-face {
+                font-family: 'open_sansextrabold_italic';
+                src: url('opensans-extrabolditalic-webfont.woff2') format('woff2'),
+                    url('opensans-extrabolditalic-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+
+
+            @font-face {
+                font-family: 'open_sansitalic';
+                src: url('opensans-italic-webfont.woff2') format('woff2'),
+                    url('opensans-italic-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+
+
+            @font-face {
+                font-family: 'open_sanslight';
+                src: url('opensans-light-webfont.woff2') format('woff2'),
+                    url('opensans-light-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+
+
+            @font-face {
+                font-family: 'open_sanslight_italic';
+                src: url('opensans-lightitalic-webfont.woff2') format('woff2'),
+                    url('opensans-lightitalic-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+
+
+            @font-face {
+                font-family: 'open_sansregular';
+                src: url('opensans-regular-webfont.woff2') format('woff2'),
+                    url('opensans-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+
+
+            @font-face {
+                font-family: 'open_sanssemibold';
+                src: url('opensans-semibold-webfont.woff2') format('woff2'),
+                    url('opensans-semibold-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+
+
+            @font-face {
+                font-family: 'open_sanssemibold_italic';
+                src: url('opensans-semibolditalic-webfont.woff2') format('woff2'),
+                    url('opensans-semibolditalic-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+
+            html {
+              font-size: 10px;
+            }
+
+            body {
+              padding-top: 90px;
+              padding-bottom: 30px;
+            }
+
+            nav.custom-nav {
+              background-color: #2A2D35;
+              border-radius: 0;
+              color: #E7E7E7;
+              height: 63px;
+            }
+
+            .navbar-toggle {
+              background-color: transparent;
+              border: 1px solid transparent;
+            }
+
+            .nav.navbar-nav {
+              padding-left: 15px;
+              font-size: 20px;
+              font-weight: 300;
+              height: 63px;
+            }
+
+            .nav.navbar-nav > li {
+              padding-right: 15px;
+            }
+
+            .navbar-default .navbar-nav > .active > a,
+            .navbar-default .navbar-nav > .active > a:hover,
+            .navbar-default .navbar-nav > .active > a:focus {
+              background-color: #2A2D35;
+              color: #FFF;
+              font-weight: bolder;
+            }
+
+            .navbar-default .navbar-nav > li > a,
+            .navbar-default .navbar-nav > .open > a,
+            .navbar-default .navbar-nav > .open > a:focus,
+            .navbar-default .navbar-nav > .open > a:hover  {
+              color: #E7E7E7 !important;
+              background-color: #2A2D35 !important;
+              font-weight: 300;
+            }
+
+            .navbar-default .navbar-nav > li > a:hover,
+            .navbar-default .navbar-nav > li > a:focus
+            {
+              color: #FFF !important;
+            }
+
+            .navbar-nav > li > .dropdown-menu > li > a,
+            .navbar-nav > li > .dropdown-menu {
+              color: #464F61 !important;
+              background-color: #FFF !important;
+              text-transform: uppercase;
+              font-size: 10px;
+              border-top-right-radius: 4px;
+              border-top-left-radius: 4px;
+            }
+
+            .uppercase {
+              text-transform: uppercase;
+            }
+
+            .navbar-nav > li > .dropdown-menu > li > a:hover {
+              background-color: #E7E7E7 !important;
+              width: 100%;
+            }
+
+            .navbar-right .dropdown-menu {
+              left: 0;
+            }
+
+            .navbar-nav > li > .dropdown-menu {
+              width: 140px;
+              padding-bottom: 1.2rem;
+            }
+
+            .navbar-nav > li > .dropdown-menu > li > a {
+              padding-right: 0 !important;
+              padding-top: 1.2rem;
+              padding-left: 1.8rem !important;
+            }
+
+            .navbar-right > ul.nav.navbar-nav {
+              font-size: 10px;
+              display: flex;
+              align-items: center;
+            }
+
+            .navbar-right > ul.nav.navbar-nav > .dropdown-toggle {
+              padding-left: 5px;
+            }
+
+            .navbar-right > ul.nav.navbar-nav > li {
+              padding-right: 0;
+            }
+
+            .navbar-right > ul.nav.navbar-nav > li > a {
+              padding-right: 10px;
+              padding-left: 10px;
+            }
+
+            .navbar-right > ul.nav.navbar-nav > li.line {
+              padding-top: 15px;
+              font-size: 12px;
+            }
+
+            .navbar-right > ul.nav.navbar-nav > li.line:last-child {
+              display: none;
+            }
+
+            .navbar-right > ul.nav.navbar-nav > li.space {
+              padding-right: 20px;
+            }
+
+            .navbar-right > ul.nav.navbar-nav > li.bolder > a {
+              font-weight: 700;
+            }
+
+            a.logo {
+              display: inline-block;
+              background: url('zappLogo.png') center center no-repeat;
+              background-size: 43px 17px;
+              width: 80px;
+              height: 63px;
+            }
+
+            div.errors-wrapper {
+              max-width: 450px;
+              margin: -20px auto 0 auto;
+              padding-top: 105px;
+            }
+
+            div.errors-container {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-items: center;
+            }
+
+            h1.errors-title {
+              /* The page you were lo: */
+              font-family: open_sansbold;
+              font-size: 24px;
+              color: #2B2D35;
+              line-height: 34px;
+              margin: 15px 0;
+              text-align: center;
+            }
+
+            p.errors-label {
+              /* You may have mistype: */
+              font-family: open_sanssemibold;
+              font-size: 14px;
+              color: rgba(54,60,74,0.50);
+              line-height: 24px;
+              margin: 15px 0;
+              text-align: center;
+            }
+
+            a.errors-button {
+              margin-top: 35px;
+              display: block;
+              position: relative;
+              width: 150px;
+              height: 40px;
+              line-height: 40px;
+              /* Rectangle 2: */
+              font-family: open_sansbold;
+              text-transform: uppercase;
+              transition: transform .4s cubic-bezier(.215, .61, .355, 1);
+              font-size: 12px;
+              color: #FFFFFF;
+              letter-spacing: 1px;
+              text-align: center;
+            }
+
+            span.button {
+              position: relative;
+              z-index: 1;
+            }
+
+            a.errors-button:after {
+              content: '';
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              z-index: 0;
+              background: #27DA86;
+              border-radius: 100px;
+              box-shadow: 0 8px 24px 0 rgba(39,218,134,0.30), 0 2px 8px 0 rgba(39,218,134,0.15);
+              transition: .4s cubic-bezier(.215, .61, .355, 1);
+            }
+
+            a.errors-button:hover {
+              color: #FFFFFF;
+              transform: translate3d(0, -2px, 0);
+              text-decoration: none;
+            }
+
+            a.errors-button:hover:after {
+              box-shadow: 0 8px 34px 0 rgba(39,218,134,0.30), 0 2px 18px 0 rgba(39,218,134,0.15);
+              transform: translateZ(0) scale3d(1.03, 1.03, 1.03);
+            }
+
+
+        </style>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js" charset="utf-8"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      </head>
+      <body>
+        <nav class="navbar navbar-default navbar-fixed-top custom-nav">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button class="navbar-toggle collapsed" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a href="http://zapp.applicaster.com/" class="navbar-brand logo"></a>
+            </div>
+          </div>
+        </nav>
+        <div class="container">
+          <div class="errors-wrapper">
+            <div class="errors-container">
+              <h1 class="errors-title">
+                We'll be back soon!
+              </h1>
+              <p class="errors-label">
+                We're doing some maintenance on our servers, and will be back shortly.
+              </p>
+            </div>
+          </div>
+        </div>
+    </body></html>
+binaryData: {}
