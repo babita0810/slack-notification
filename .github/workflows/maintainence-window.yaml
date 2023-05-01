@@ -58,31 +58,32 @@ jobs:
         if: ${{github.event.inputs.job_env}}  == 'staging'
         run: |
           APP_STATUS=${{github.event.inputs.app_status}}
-          cd .github/maintenance-window/stag
+          cd .github/maintenance-window
           ls
           if [[ $APP_STATUS == "enable" ]];
           then
             echo "$APP_STATUS"
-            kubectl apply -f 50x.yaml 
-            kubectl apply -f configmap-file.yaml
+            kubectl apply -n zapp-stag-test -f  50x.yaml 
+            kubectl apply -n zapp-stag-test -f configmap-file.yaml
           else
-            kubectl apply -f old-50x.yaml
-            kubectl apply -f old-cm.yaml
+            kubectl apply  -n zapp-stag-test -f old-50x.yaml
+            kubectl apply -n zapp-stag-test -f old-cm.yaml
           fi
           kubectl -n zapp-stag-test rollout restart deployment/zapp-stag-web
             
-      # - name: Enable/Disable maintainence window for prod
-      #   if: ${{github.event.inputs.job_env}}  == 'prod'
-      #   run: |
-      #     APP_STATUS=${{github.event.inputs.app_status}}
-      #     if [[ $APP_STATUS == "enable" ]];
-      #     then
-      #       kubectl apply -f 50x.yaml 
-      #       kubectl apply -f configmap-file.yaml
-      #     else
-      #       kubectl apply -f old-50x.yaml
-      #       kubectl apply -f old-cm.yaml
-      #     fi
-      #     kubectl -n zapp-stag-test rollout restart deployment/zapp-stag-web
+      - name: Enable/Disable maintainence window for prod
+        if: ${{github.event.inputs.job_env}}  == 'prod'
+        run: |
+          APP_STATUS=${{github.event.inputs.app_status}}
+          cd .github/maintenance-window
+          if [[ $APP_STATUS == "enable" ]];
+          then
+            kubectl apply -n zapp-staging -f  50x.yaml 
+            kubectl apply -n zapp-staging -f configmap-file.yaml
+          else
+            kubectl apply -n zapp-staging -f old-50x.yaml
+            kubectl apply -n zapp-staging -f old-cm.yaml
+          fi
+          kubectl -n zapp-staging rollout restart deployment/zapp-staging-web
             
         
