@@ -72,6 +72,7 @@ jobs:
             fi
           else
             if [[ $JOB_ENV == "staging" ]];
+            then
               kubectl apply  -n zapp-stag-test -f old-50x.yaml
               kubectl apply -n zapp-stag-test -f old-cm.yaml
             else
@@ -80,6 +81,7 @@ jobs:
             fi
           fi
           if [[ $JOB_ENV == "staging" ]];
+          then
             kubectl -n zapp-stag-test rollout restart deployment/zapp-stag-web
           else
             kubectl -n zapp-staging rollout restart deployment/zapp-staging-web
