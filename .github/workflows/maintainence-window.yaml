@@ -64,6 +64,7 @@ jobs:
           then
             echo "$APP_STATUS"
             if [[ $JOB_ENV == "staging" ]];
+            then
               kubectl apply -n zapp-stag-test -f  50x.yaml 
               kubectl apply -n zapp-stag-test -f configmap-file.yaml
             else
