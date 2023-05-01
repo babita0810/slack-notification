@@ -55,7 +55,7 @@ jobs:
             mkdir ~/.kube
             echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ~/.kube/config
       - name: Enable/Disable maintainence window for staging
-        if: github.event.inputs.job_env  == staging
+        if: github.event.inputs.job_env  == "staging"
         run: |
           echo "${{github.event.inputs.job_env}}"
           APP_STATUS=${{github.event.inputs.app_status}}
@@ -73,7 +73,7 @@ jobs:
           kubectl -n zapp-stag-test rollout restart deployment/zapp-stag-web
             
       - name: Enable/Disable maintainence window for prod
-        if: github.event.inputs.job_env  == prod
+        if: github.event.inputs.job_env  == "prod"
         run: |
           echo "${{github.event.inputs.job_env}}"
           APP_STATUS=${{github.event.inputs.app_status}}
