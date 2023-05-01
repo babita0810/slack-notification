@@ -4,6 +4,13 @@ name: Run command in kubernetes cluster
 on:
   workflow_dispatch:
     inputs:
+      job_env:
+        description: Choose Environment
+        required: true
+        type: choice
+        options:
+          - 'staging'
+          - 'prod'
       app_status:
         description: Choose the action
         required: true
@@ -47,12 +54,14 @@ jobs:
             sudo mv kubectl /usr/local/bin/
             mkdir ~/.kube
             echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ~/.kube/config
-      - name: Enable/Disable maintainence window
+      - name: Enable/Disable maintainence window for staging
+        if: ${{github.event.inputs.job_env}}  == 'staging'
         run: |
           APP_STATUS=${{github.event.inputs.app_status}}
+          cd .github/maintenance-window/stag
+          ls
           if [[ $APP_STATUS == "enable" ]];
           then
-            ls 
             echo "$APP_STATUS"
             kubectl apply -f 50x.yaml 
             kubectl apply -f configmap-file.yaml
@@ -62,3 +71,18 @@ jobs:
           fi
           kubectl -n zapp-stag-test rollout restart deployment/zapp-stag-web
             
+      # - name: Enable/Disable maintainence window for prod
+      #   if: ${{github.event.inputs.job_env}}  == 'prod'
+      #   run: |
+      #     APP_STATUS=${{github.event.inputs.app_status}}
+      #     if [[ $APP_STATUS == "enable" ]];
+      #     then
+      #       kubectl apply -f 50x.yaml 
+      #       kubectl apply -f configmap-file.yaml
+      #     else
+      #       kubectl apply -f old-50x.yaml
+      #       kubectl apply -f old-cm.yaml
+      #     fi
+      #     kubectl -n zapp-stag-test rollout restart deployment/zapp-stag-web
+            
+        
