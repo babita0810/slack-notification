@@ -25,4 +25,6 @@ workflows:
     jobs:
       - say-hello:
           filters: { branches: { ignore: ^.*\/* } }
+      - say-hello:
+          filters: { branches: { only: /.*(hotfix).*/ } }
 
