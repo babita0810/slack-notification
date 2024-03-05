@@ -1,0 +1,26 @@
+name: Run gcp script
+on:
+  workflow_dispatch:
+    inputs:
+      projects:
+        description: Enter the project name
+        required: true
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.4.0
+        with:
+          service_account_key: {{ secrets.GCP_LOGGING_SA_KEY }}
+
+      - name: Run Shell Script
+        run: |
+          bash gcp-script.sh
+
+
+        
