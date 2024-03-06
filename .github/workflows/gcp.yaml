@@ -21,7 +21,8 @@ jobs:
 
       - name: Run Shell Script
         run: |
-          echo ${{ secrets.GCP_LOGGING_SA_KEY }} > ./centralized-sa.json
+          echo ${{ secrets.GCP_LOGGING_SA_KEY }} > centralized-sa.json
           gcloud auth activate-service-account --key-file="./centralized-sa.json"
           rm ./centralized-sa.json
-          bash gcp-script.sh
+       
+        # bash gcp-script.sh
