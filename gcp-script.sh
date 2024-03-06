@@ -8,7 +8,7 @@ setup_log_sink(){
     # local service_account="$3"
     echo "Setting up Log Sink in Source Project: $source_project"
     
-    gcloud auth activate-service-account --key-file="./centralized-sa.json"
+    # gcloud auth activate-service-account --key-file="./centralized-sa.json"
 
         if ! gcloud logging sinks describe "$sink_name" --project="$source_project" &>/dev/null; then
 
@@ -33,27 +33,5 @@ done <<EOF
 zapp-ran-demo
 EOF
 
-
-# create_centralized_project(){
-#     echo "Creating centralized project" 
-#     gcloud projects create centralized-log-monitoring
-#     gcloud config set project centralized-log-monitoring
-# }
-
-# create_log_bucket(){
-#     echo "Creating logging bucket in centralized project"
-#     gcloud logging buckets create centralized-log-bucket --location=global
-# }
-
-# setup_log_sink{
-#     local source_project = $1
-#     local sink_name = $2
-#     gcloud config set project "$source_project"
-#     gcloud logging sinks create "$sink_name" "logging.googleapis.com/projects/$CENTRALIZED_PROJECT_ID/locations/global/buckets/centralized-log-bucket" 
-# }
-
-# grant_access{
-
-# }
 
 
