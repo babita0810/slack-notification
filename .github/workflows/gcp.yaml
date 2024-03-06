@@ -20,5 +20,7 @@ jobs:
           export_default_credentials: true
 
       - name: Run Shell Script
-        run: |
-          bash gcp-script.sh
+        run: ./gcp-script.sh
+        shell: bash
+        
+           
