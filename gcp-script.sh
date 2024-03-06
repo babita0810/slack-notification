@@ -8,7 +8,7 @@ setup_log_sink(){
     # local service_account="$3"
     echo "Setting up Log Sink in Source Project: $source_project"
     
-    # gcloud auth activate-service-account --key-file="./centralized-sa.json"
+    gcloud auth activate-service-account --key-file="$GCP_LOGGING_SA_KEY"
 
         if ! gcloud logging sinks describe "$sink_name" --project="$source_project" &>/dev/null; then
 
