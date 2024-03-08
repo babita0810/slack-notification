@@ -3,11 +3,13 @@
 CENTRALIZED_PROJECT_ID="centralized-log-monitoring"
 
 
+
 setup_log_sink(){
     source_project=$1
     sink_name="log-sink"
     # local service_account="$3"
     echo "Setting up Log Sink in Source Project: $source_project"
+
         if ! gcloud logging sinks describe "$sink_name" --project="$source_project" &>/dev/null; then
 
             gcloud config set project "$source_project"
