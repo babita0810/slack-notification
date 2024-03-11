@@ -3,10 +3,9 @@
 CENTRALIZED_PROJECT_ID="centralized-log-monitoring"
 
 
-
 setup_log_sink(){
     source_project=$1
-    sink_name="logs-sink5"
+    sink_name="logs-sink"
     # local service_account="$3"
     echo "Setting up Log Sink in Source Project: $source_project"
 
@@ -15,7 +14,7 @@ setup_log_sink(){
             gcloud config set project "$source_project"
             
             echo "Creating log sink for "$source_project" project"
-            gcloud logging sinks create "$sink_name" "logging.googleapis.com/projects/$source_project/locations/global/buckets/centralized-logs" 
+            gcloud logging sinks create "$sink_name" "logging.googleapis.com/projects/$CENTRALIZED_PROJECT_ID/locations/global/buckets/centralized-logs" 
             service_account=$(gcloud logging sinks describe "$sink_name" --project="$source_project" --format="value(writerIdentity)" | cut -d':' -f2-)
             echo "$service_account"
             gcloud projects add-iam-policy-binding "$CENTRALIZED_PROJECT_ID" --member="serviceAccount:$service_account" --role="roles/logging.configWriter" --condition="expression=resource.name.endsWith('locations/global/buckets/centralized-logs'),title=serviceAccount:$service_account"
