@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       projects:
-        description: Enter the project name
+        description: Enter the project list
         required: true
 jobs:
   run-script:
@@ -19,8 +19,16 @@ jobs:
           credentials_json: ${{ secrets.GCP_LOGGING_SA_KEY }}
           export_default_credentials: true
 
+      # - name: Run Shell Script
+      #   run: ./gcp-script.sh
+      #   shell: bash
+
       - name: Run Shell Script
-        run: ./gcp-script.sh
-        shell: bash
-        
-           
+        run: |
+          # Split the comma-separated list of projects into an array
+          IFS=',' read -r -a projects <<< "${{ github.event.inputs.projects }}"
+          for project in "${projects[@]}"; do
+            echo "Processing project: $project"
+            # Call your script or commands for each project
+            bash gcp-script.sh "$project"
+          done

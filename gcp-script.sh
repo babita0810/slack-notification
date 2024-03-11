@@ -6,13 +6,14 @@ CENTRALIZED_PROJECT_ID="centralized-log-monitoring"
 setup_log_sink(){
     source_project=$1
     sink_name="log-sink"
-    # local service_account="$3"
     echo "Setting up Log Sink in Source Project: $source_project"
 
         if ! gcloud logging sinks describe "$sink_name" --project="$source_project" &>/dev/null; then
             
             gcloud config set project "$source_project"
+            
             export CLOUDSDK_CORE_PROJECT=$source_project
+            
             echo "Creating log sink for "$source_project" project"
             gcloud logging sinks create "$sink_name" "logging.googleapis.com/projects/$CENTRALIZED_PROJECT_ID/locations/global/buckets/centralized-logs" 
             service_account=$(gcloud logging sinks describe "$sink_name" --project="$source_project" --format="value(writerIdentity)" | cut -d':' -f2-)
@@ -25,12 +26,14 @@ setup_log_sink(){
     
 }
 
-while read -r source_project ; do 
-    setup_log_sink $source_project
-    echo "$source_project"
-done <<EOF
-zapp-ran-demo
-EOF
+setup_log_sink $source_project
+
+# while read -r source_project ; do 
+#     setup_log_sink $source_project
+#     echo "$source_project"
+# done <<EOF
+# zapp-ran-demo
+# EOF
 
 
 
