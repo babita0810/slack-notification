@@ -26,7 +26,7 @@ setup_log_sink(){
     
 }
 
-setup_log_sink $source_project
+setup_log_sink $1
 
 # while read -r source_project ; do 
 #     setup_log_sink $source_project
